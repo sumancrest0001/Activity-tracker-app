@@ -1,0 +1,14 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #3abef2;
+  padding: 1.5rem 0.7rem 0.7rem 0.7rem;
+  color: #fff;
+}
+
+.Header > div {
+  display: inline-block;
+  font-size: 1.3rem;
+}
