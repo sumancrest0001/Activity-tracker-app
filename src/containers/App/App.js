@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import Slogan from '../../components/Slogan/Slogan';
 import Footer from '../../components/Footer/Footer';
-
+import Dashboard from '../Dashboard/Dashboard';
 import './App.css';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Slogan />
+      <Dashboard />
       <Footer />
     </div>
   );

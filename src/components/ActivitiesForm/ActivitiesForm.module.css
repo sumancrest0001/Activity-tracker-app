@@ -1,0 +1,46 @@
+.Visible {
+  display: block !important;
+}
+
+.Form {
+  width: 60%;
+  min-width: 200px;
+  margin: 3rem auto;
+}
+
+.SubForm {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.Inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  justify-items: start;
+  align-items: center;
+  font-size: 1rem;
+  margin: 0.5rem auto;
+}
+.Inputs label {
+  width: 50%;
+  display: flex;
+}
+
+.Inputs input {
+  display: flex;
+  justify-self: center;
+  width: 25%;
+}
+.Minutes {
+  margin-left: 1rem;
+}
+
+.SubmitButton {
+  font-size: 1rem;
+  color: #fff;
+  background-color: #6ff26d;
+  border: 1px solid #aaa;
+  padding: 0.4rem 1rem;
+  margin-top: 1rem;
+}
