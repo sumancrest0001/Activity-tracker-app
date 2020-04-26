@@ -1,0 +1,26 @@
+.SignUp {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.SignUp input {
+  font-size: 1rem;
+  margin: 0.5rem 1rem;
+  padding: 0.4rem;
+}
+
+.SignUpBtn {
+  width: 40%;
+  margin: auto;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  color: #3abef2;
+  border: 1px solid #3abef2;
+}
+
+.SignUpBtn:hover {
+  background-color: #3abef2;
+  color: #fff !important;
+}

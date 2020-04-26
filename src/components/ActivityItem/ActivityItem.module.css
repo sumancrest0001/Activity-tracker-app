@@ -1,0 +1,15 @@
+.Item {
+  width: 140px;
+  display: flex;
+  flex-direction: row;
+  background-color: #6ff26d;
+  font-size: 1rem;
+  color: black;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+
+.ItemImage {
+  width: 50px;
+  height: 50px;
+}
