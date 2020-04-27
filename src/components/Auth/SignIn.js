@@ -1,16 +1,16 @@
 import React from 'react';
 import classes from './Auth.module.css';
 
-const login = () => {
+const signin = ({ submitForm, changed, values }) => {
   return (
 
-    <form className={classes.SignUp}>
-      <input type="email" placeholder="Enter Email" />
-      <input type="password" placeholder="Enter Password" />
+    <form onSubmit={submitForm} className={classes.SignUp}>
+      <input type="email" value={values.email} placeholder="Enter Email" onChange={event => changed(event, 'email')} />
+      <input type="password" value={values.password} placeholder="Enter Password" onChange={event => changed(event, 'password')} />
       <button type="submit" className={classes.SignUpBtn}>Sign In</button>
     </form>
 
   );
 };
 
-export default login;
+export default signin;
