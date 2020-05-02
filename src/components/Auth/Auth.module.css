@@ -18,6 +18,7 @@
   padding: 0.5rem;
   color: #3abef2;
   border: 1px solid #3abef2;
+  transition: 0.5s ease-in;
 }
 
 .SignUpBtn:hover {

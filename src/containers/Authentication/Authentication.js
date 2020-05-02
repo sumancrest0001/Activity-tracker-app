@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import classes from './Authentication.module.css';
 import SignUp from '../../components/Auth/SignUp';
 import SignIn from '../../components/Auth/SignIn';
@@ -24,32 +25,68 @@ class Authentication extends Component {
     };
   }
 
-  signUpChangedHandler = (event, inputId) => {
+  signUpChangedHandler = event => {
     const { signupCredentials } = this.state;
     const updatedCredentials = {
       ...signupCredentials,
+      [event.target.name]: event.target.value,
     };
-    updatedCredentials[inputId] = event.target.value;
     this.setState({ signupCredentials: updatedCredentials });
-    console.log(this.state.signupCredentials[inputId]);
   };
 
-  signInChangedHandler = (event, inputId) => {
-    const { signinCredentials } = this.state.signinCredentials;
+  signInChangedHandler = event => {
+    const { signinCredentials } = this.state;
     const updatedCredentials = {
       ...signinCredentials,
+      [event.target.name]: event.target.value,
     };
-    updatedCredentials[inputId] = event.target.value;
     this.setState({ signinCredentials: updatedCredentials });
-    console.log(this.state.signinCredentials);
   };
 
-  /*  loginHandler = event => {
-     event.preventDefault();
-     this.setState({ loading: true });
- 
-   };
-  */
+  signUpHandler = event => {
+    const {
+      signupCredentials,
+    } = this.state;
+    axios.post('https://track-my-activity.herokuapp.com/registrations',
+      {
+        user: {
+          name: signupCredentials.fullName,
+          email: signupCredentials.email,
+          password: signupCredentials.password,
+          password_confirmation: signupCredentials.confirmPassword,
+        },
+      },
+      { withCredentials: true })
+      .then(response => {
+        console.log('registration res', response);
+      })
+      .catch(error => {
+        console.log('registration error', error.response);
+      });
+    event.preventDefault();
+  };
+
+  signInHandler = event => {
+    const {
+      signinCredentials,
+    } = this.state;
+    axios.post('https://track-my-activity.herokuapp.com/sessions', {
+      user: {
+        email: signinCredentials.email,
+        password: signinCredentials.password,
+      },
+    },
+      { withCredentials: true })
+      .then(response => {
+        console.log('registration res', response);
+      })
+      .catch(error => {
+        console.log('registration error', error.response);
+      });
+    event.preventDefault();
+  };
+
+
   switchForm = value => {
     let signUp;
     let signIn;
@@ -63,7 +100,7 @@ class Authentication extends Component {
 
   render() {
     const {
-      signup, signin, signinCredentials, signupCredentials
+      signup, signin, signinCredentials, signupCredentials,
     } = this.state;
     return (
       <div className={classes.Authentication}>
@@ -83,8 +120,20 @@ class Authentication extends Component {
             Sign In
           </div>
         </div>
-        {signup ? <SignUp submitForm={this.signupHandler} changed={this.signUpChangedHandler} values={signupCredentials} /> : null}
-        {signin ? <SignIn submitForm={this.signinHandler} changed={this.signInChangedHandler} values={signinCredentials} /> : null}
+        {signup ? (
+          <SignUp
+            submitForm={this.signUpHandler}
+            changed={this.signUpChangedHandler}
+            values={signupCredentials}
+          />
+        ) : null}
+        {signin ? (
+          <SignIn
+            submitForm={this.signInHandler}
+            changed={this.signInChangedHandler}
+            values={signinCredentials}
+          />
+        ) : null}
       </div>
     );
   }

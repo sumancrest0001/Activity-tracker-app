@@ -5,9 +5,26 @@ const signin = ({ submitForm, changed, values }) => {
   return (
 
     <form onSubmit={submitForm} className={classes.SignUp}>
-      <input type="email" value={values.email} placeholder="Enter Email" onChange={event => changed(event, 'email')} />
-      <input type="password" value={values.password} placeholder="Enter Password" onChange={event => changed(event, 'password')} />
-      <button type="submit" className={classes.SignUpBtn}>Sign In</button>
+      <input
+        type="email"
+        value={values.email}
+        name="email"
+        placeholder="Enter Email"
+        onChange={changed}
+      />
+      <input
+        type="password"
+        name="password"
+        value={values.password}
+        placeholder="Enter Password"
+        onChange={changed}
+      />
+      <button
+        type="submit"
+        className={classes.SignUpBtn}
+      >
+        Sign In
+      </button>
     </form>
 
   );
