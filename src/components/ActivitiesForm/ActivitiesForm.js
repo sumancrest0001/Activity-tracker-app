@@ -8,7 +8,6 @@ const activitiesForm = () => {
   const toggleSubForm = () => {
     const form = document.querySelector('#subform');
     form.classList.toggle(classes.Visible);
-    console.log(form);
   };
 
   return (

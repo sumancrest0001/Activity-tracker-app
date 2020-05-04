@@ -25,3 +25,16 @@
   background-color: #3abef2;
   color: #fff !important;
 }
+
+.LogoutBtn {
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: #3abef2;
+  color: #fff;
+  border: none;
+  transition: 0.3s ease-out;
+}
+.LogoutBtn:hover {
+  color: #3abef2;
+  background-color: #fff;
+}

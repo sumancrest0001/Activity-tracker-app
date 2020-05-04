@@ -32,3 +32,10 @@
   color: #fff;
 }
 
+.ErrorMessage {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  color: red;
+}
+
