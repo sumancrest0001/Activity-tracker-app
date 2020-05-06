@@ -1,7 +1,7 @@
 # ACTIVITY-TRACKER-APP
 This is the final capstone project from the Microverse curriculum. The solo objective of this project is to give facility to individual user to record their daily records of various activities, access, and compare them to see their progress.
 
-## [Live Demo](https://get-recipe-app.herokuapp.com/)
+## [Live Demo](https://suman-activity-tracker.herokuapp.com/)
 
 ## Features of the project
 - Connected with RESTful rails API to get and store data.
@@ -37,5 +37,7 @@ To contribute to the project. Please create an issue.
 
 ## NOTE 
 Comparison page is under progress.
+
+If you like my work then do not forget to :star: this project. Any type of feedback will be appreciated.
 
 ## MIT Licensed
