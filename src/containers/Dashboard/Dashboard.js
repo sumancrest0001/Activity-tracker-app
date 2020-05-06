@@ -38,7 +38,7 @@ class Dashboard extends Component {
     const { onSetChangedStatus } = this.props;
     const { records } = this.state;
     event.preventDefault();
-    axios.post('https://track-my-activity.herokuapp.com/main_activities',
+    axios.post('https://cors-anywhere.herokuapp.com/https://track-my-activity.herokuapp.com/main_activities',
       {
         data: records,
       },
