@@ -8,7 +8,7 @@ import classes from './Auth.module.css';
 const logout = props => {
   const { historyArray, onSetCredentials } = props;
   const logoutHandler = () => {
-    axios.delete('https://track-my-activity.herokuapp.com/https://track-my-activity.herokuapp.com/logout/', { withCredentials: true })
+    axios.delete('https://track-my-activity.herokuapp.com/logout/', { withCredentials: true })
       .then(response => {
         if (response.data.logged_out) {
           const data = {

@@ -14,7 +14,7 @@ const setChangedStatus = () => ({
 });
 
 const getPastData = () => dispatch => {
-  axios.get('https://cors-anywhere.herokuapp.com/https://track-my-activity.herokuapp.com/main_activities',
+  axios.get('https://track-my-activity.herokuapp.com/main_activities',
     { withCredentials: true })
     .then(response => {
       if (response.data.status === 'SUCCESS') {

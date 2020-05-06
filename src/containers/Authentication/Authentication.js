@@ -70,7 +70,7 @@ class Authentication extends Component {
       signupCredentials,
     } = this.state;
     const { onSetFailedCredentials } = this.props;
-    axios.post('https://track-my-activity.herokuapp.com/https://track-my-activity.herokuapp.com/registrations',
+    axios.post('https://track-my-activity.herokuapp.com/registrations',
       {
         user: {
           name: signupCredentials.fullName,
@@ -97,7 +97,7 @@ class Authentication extends Component {
       signinCredentials,
     } = this.state;
     const { onSetFailedCredentials } = this.props;
-    axios.post('https://track-my-activity.herokuapp.com/https://track-my-activity.herokuapp.com/sessions', {
+    axios.post('https://track-my-activity.herokuapp.com/sessions', {
       user: {
         email: signinCredentials.email,
         password: signinCredentials.password,
