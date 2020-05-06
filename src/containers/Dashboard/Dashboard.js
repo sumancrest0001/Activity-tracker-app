@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Slogan from '../../components/Slogan/Slogan';
 import ActivitiesForm from '../../components/ActivitiesForm/ActivitiesForm';
 import classes from './Dashboard.module.css';
+import { setChangedStatus } from '../../actions/data';
 
 class Dashboard extends Component {
   constructor() {
@@ -32,6 +35,7 @@ class Dashboard extends Component {
   };
 
   submitHandler = event => {
+    const { onSetChangedStatus } = this.props;
     const { records } = this.state;
     event.preventDefault();
     axios.post('https://track-my-activity.herokuapp.com/main_activities',
@@ -41,6 +45,7 @@ class Dashboard extends Component {
       { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
+          onSetChangedStatus();
           this.setState({ message: 'Record is created' });
         }
       })
@@ -65,5 +70,12 @@ class Dashboard extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  onSetChangedStatus: () => dispatch(setChangedStatus()),
+});
 
-export default Dashboard;
+Dashboard.propTypes = {
+  onSetChangedStatus: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(Dashboard);

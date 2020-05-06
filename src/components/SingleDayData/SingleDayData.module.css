@@ -1,0 +1,6 @@
+.StatSection {
+  width: 93%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}

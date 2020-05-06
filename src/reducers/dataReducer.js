@@ -22,7 +22,13 @@ const dataReducer = (state = initialState, action) => {
         pastDataError: true,
         receivedData: false,
       };
-
+    case ('SET_CHANGED_PASTDATA'):
+      return {
+        ...state,
+        pastData: {},
+        pastDataError: false,
+        receivedData: false,
+      };
     default:
       return state;
   }

@@ -1,46 +1,53 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setPastData, setFailedPastData } from '../../actions/data';
+import { getPastData } from '../../actions/data';
 import Record from '../../components/History/Record/Record';
+import SingleDayData from '../../components/SingleDayData/SingleDayData';
 import findTaskByID from '../../utility/utility';
 
 
 class History extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentTask: {},
+    };
+  }
+
   componentDidMount() {
-    const { alreadyRequested, onSetPastData, onSetFailedPastData } = this.props;
+    const { alreadyRequested, onGetPastData } = this.props;
     if (!alreadyRequested) {
-      axios.get('https://track-my-activity.herokuapp.com/main_activities',
-        { withCredentials: true })
-        .then(response => {
-          if (response.data.status === 'SUCCESS') {
-            const records = {
-              mainActivities: response.data.data.mainactivities,
-              tasks: response.data.data.tasks,
-            };
-            onSetPastData(records);
-          } else {
-            console.log('Sorry, Something went wrong');
-          }
-        })
-        .catch(error => {
-          onSetFailedPastData();
-          console.log('error', error);
-        });
+      onGetPastData();
     }
   }
 
+  updateTasks = (id, tasks) => {
+    const matchedTask = findTaskByID(id, tasks);
+    this.setState({ currentTask: matchedTask });
+  };
+
+  isEmpty = obj => {
+    const keys = Object.keys(obj);
+    return keys.length === 0;
+  };
+
   render() {
     const { mainActivities, tasks } = this.props;
+    const { currentTask } = this.state;
     return (
-      mainActivities.map(mainActivity => (
-        <Record
-          key={mainActivity.id}
-          mainActivity={mainActivity}
-          task={findTaskByID(mainActivity.id, tasks)}
-        />
-      ))
+      <div>
+        {mainActivities
+          ? mainActivities.map(mainActivity => (
+            <Record
+              key={mainActivity.id}
+              mainActivity={mainActivity}
+              clicked={() => this.updateTasks(mainActivity.id, tasks)}
+            />
+          ))
+          : null}
+        {!this.isEmpty(currentTask) ? <SingleDayData task={currentTask} /> : null}
+      </div>
     );
   }
 }
@@ -52,13 +59,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSetPastData: data => dispatch(setPastData(data)),
-  onSetFailedPastData: () => dispatch(setFailedPastData()),
+  onGetPastData: () => dispatch(getPastData()),
 });
 
 History.propTypes = {
-  onSetPastData: PropTypes.func.isRequired,
-  onSetFailedPastData: PropTypes.func.isRequired,
+  onGetPastData: PropTypes.func.isRequired,
   mainActivities: PropTypes.instanceOf(Array).isRequired,
   tasks: PropTypes.instanceOf(Array).isRequired,
   alreadyRequested: PropTypes.bool.isRequired,

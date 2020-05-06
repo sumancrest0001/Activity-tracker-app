@@ -1,8 +1,10 @@
 const findTaskByID = (id, taskArray) => {
-  let task;
+  let task = {};
   for (let i = 0; i < taskArray.length; i += 1) {
-    task = taskArray[i].main_activity_id === id ? taskArray[i] : [];
-    break;
+    if (taskArray[i].main_activity_id === id) {
+      task = taskArray[i];
+      break;
+    }
   }
   return task;
 };

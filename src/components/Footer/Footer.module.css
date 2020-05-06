@@ -10,10 +10,12 @@
   background: rgba(0,0,0,0.6);
 }
 
-.Footer > div {
+.Footer > a {
   width: 23%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  text-decoration: none;
+  color: #000;
 }
 
 .FooterIcon {
