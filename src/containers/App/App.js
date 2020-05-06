@@ -24,18 +24,15 @@ class App extends Component {
             name: response.data.user.name,
             loggedIn: response.data.logged_in,
           };
-
         } else {
           data = {
             name: '',
             loggedIn: response.data.logged_in,
           };
         }
-        console.log('response', response);
         onSetCredentials(data);
       })
-      .catch((error) => {
-        console.log('response error', error);
+      .catch(() => {
         onSetFailedCredentials();
       });
   }

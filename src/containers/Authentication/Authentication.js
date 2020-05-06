@@ -45,7 +45,6 @@ class Authentication extends Component {
     };
     onSetCredentials(data);
     history.push('/');
-    console.log('response', response);
   };
 
   signUpChangedHandler = event => {
@@ -104,7 +103,7 @@ class Authentication extends Component {
         password: signinCredentials.password,
       },
     },
-      { withCredentials: true })
+    { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
           this.successfulSignin(response);

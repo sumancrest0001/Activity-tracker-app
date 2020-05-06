@@ -16,7 +16,6 @@ const logout = props => {
             loggedIn: false,
           };
           onSetCredentials(data);
-          console.log(props);
           historyArray.push('/');
         }
       });
@@ -29,5 +28,10 @@ const logout = props => {
 const mapDispatchToProps = dispatch => ({
   onSetCredentials: data => dispatch(setCredentials(data)),
 });
+
+logout.propTypes = {
+  onSetCredentials: PropTypes.func.isRequired,
+  historyArray: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(logout);

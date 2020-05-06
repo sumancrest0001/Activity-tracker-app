@@ -5,7 +5,7 @@ import { getPastData } from '../../actions/data';
 import Record from '../../components/History/Record/Record';
 import SingleDayData from '../../components/SingleDayData/SingleDayData';
 import findTaskByID from '../../utility/utility';
-
+import classes from './History.module.css';
 
 class History extends Component {
   constructor() {
@@ -37,6 +37,7 @@ class History extends Component {
     const { currentTask } = this.state;
     return (
       <div>
+        <div className={classes.Title}>Records from past one week.</div>
         {mainActivities
           ? mainActivities.map(mainActivity => (
             <Record

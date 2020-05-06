@@ -49,11 +49,11 @@ class Stat extends Component {
       <div>
         {matchedTask !== null ? (
           <>
-            <h3>Today's record</h3>
+            <h3>Today&apos;s record</h3>
             <SingleDayData task={matchedTask} />
           </>
         )
-          : <h3>Please add Today's record.</h3>}
+          : <h3>Please add Today&apos;s record.</h3>}
       </div>
     );
   }

@@ -23,14 +23,13 @@ const getPastData = () => dispatch => {
           tasks: response.data.data.tasks,
         };
         dispatch(setPastData(records));
-      } else {
-        console.log('Sorry, Something went wrong');
       }
     })
-    .catch(error => {
+    .catch(() => {
       dispatch(setFailedPastData());
-      console.log('error', error);
     });
 };
 
-export { setPastData, setFailedPastData, setChangedStatus, getPastData };
+export {
+  setPastData, setFailedPastData, setChangedStatus, getPastData,
+};

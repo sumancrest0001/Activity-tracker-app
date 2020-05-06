@@ -6,7 +6,6 @@ import classes from './ActivitiesForm.module.css';
 
 const activitiesForm = ({ values, submitForm, changed }) => {
   const toggleSubForm = () => {
-    console.log(values);
     const form = document.querySelector('#subform');
     form.classList.toggle(classes.Visible);
   };
