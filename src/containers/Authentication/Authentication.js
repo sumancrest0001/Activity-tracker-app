@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axiosConfig from '../../config';
 import classes from './Authentication.module.css';
 import SignUp from '../../components/Auth/SignUp';
 import SignIn from '../../components/Auth/SignIn';
@@ -79,6 +80,7 @@ class Authentication extends Component {
           password_confirmation: signupCredentials.confirmPassword,
         },
       },
+      axiosConfig,
       { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
@@ -103,7 +105,8 @@ class Authentication extends Component {
         password: signinCredentials.password,
       },
     },
-      { withCredentials: true })
+    axiosConfig,
+    { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
           this.successfulSignin(response);

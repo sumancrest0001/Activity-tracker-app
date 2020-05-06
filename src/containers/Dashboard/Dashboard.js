@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axiosConfig from '../../config';
 import Slogan from '../../components/Slogan/Slogan';
 import ActivitiesForm from '../../components/ActivitiesForm/ActivitiesForm';
 import classes from './Dashboard.module.css';
@@ -42,6 +43,7 @@ class Dashboard extends Component {
       {
         data: records,
       },
+      axiosConfig,
       { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
