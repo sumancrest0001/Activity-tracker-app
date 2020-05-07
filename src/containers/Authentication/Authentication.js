@@ -103,7 +103,7 @@ class Authentication extends Component {
         password: signinCredentials.password,
       },
     },
-      { withCredentials: true })
+    { withCredentials: true })
       .then(response => {
         if (response.data.status === 'created') {
           this.successfulSignin(response);

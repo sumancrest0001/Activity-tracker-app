@@ -6,14 +6,36 @@ import classes from './MainForm.module.css';
 const mainForm = ({ toggleForm, updateValues, inputValues }) => (
   <div>
     <div className={classes.MainInput}>
-      <label htmlFor="recordingDate">Date:</label>
-      <input type="date" id="recordingDate" name="recorded" values={inputValues.recorded} onChange={updateValues} placeholder="Enter today's date" required />
+      <label htmlFor="recordingDate" id="recordingDate-label">Date:</label>
+      <input
+        type="date"
+        id="recordingDate"
+        name="recorded"
+        values={inputValues.recorded}
+        onChange={updateValues}
+        placeholder="Enter today's date"
+        required
+      />
     </div>
     <div className={classes.MainInput}>
-      <label htmlFor="recordDescription">Title:</label>
-      <input type="textarea" name="title" id="recordDescription" values={inputValues.title} onChange={updateValues} placeholder="Enter title" required />
+      <label htmlFor="recordDescription" id="recordDescription-label">Title:</label>
+      <input
+        type="textarea"
+        name="title"
+        id="recordDescription"
+        values={inputValues.title}
+        onChange={updateValues}
+        placeholder="Enter title"
+        required
+      />
     </div>
-    <button type="button" className={classes.ActivityDisplay} onClick={toggleForm}>Start Recording</button>
+    <button
+      type="button"
+      className={classes.ActivityDisplay}
+      onClick={toggleForm}
+    >
+      Start Recording
+    </button>
   </div>
 );
 
