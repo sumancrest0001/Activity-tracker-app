@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import axiosConfig from '../../config';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Authentication from '../Authentication/Authentication';
@@ -17,7 +16,7 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     const { onSetCredentials, onSetFailedCredentials } = this.props;
-    axios.get('https://track-my-activity.herokuapp.com/logged_in/', axiosConfig, { withCredentials: true })
+    axios.get('https://track-my-activity.herokuapp.com/logged_in/', { withCredentials: true })
       .then(response => {
         let data;
         if (response.data.logged_in) {

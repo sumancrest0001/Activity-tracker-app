@@ -1,5 +1,4 @@
 import axios from 'axios';
-import axiosConfig from '../config';
 
 const setPastData = data => ({
   type: 'SET_PASTDATA',
@@ -16,7 +15,6 @@ const setChangedStatus = () => ({
 
 const getPastData = () => dispatch => {
   axios.get('https://track-my-activity.herokuapp.com/main_activities',
-    axiosConfig,
     { withCredentials: true })
     .then(response => {
       if (response.data.status === 'SUCCESS') {
