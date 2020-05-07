@@ -16,7 +16,7 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     const { onSetCredentials, onSetFailedCredentials } = this.props;
-    axios.get('https://track-my-activity.herokuapp.com/logged_in/', { withCredentials: true })
+    axios.get('https://track-my-activity.herokuapp.com/logged_in', { withCredentials: true })
       .then(response => {
         let data;
         if (response.data.logged_in) {
