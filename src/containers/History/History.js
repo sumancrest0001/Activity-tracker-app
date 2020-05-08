@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getPastData } from '../../actions/data';
 import Record from '../../components/History/Record/Record';
 import SingleDayData from '../../components/SingleDayData/SingleDayData';
-import findTaskByID from '../../utility/utility';
+import { isEmpty, findTaskByID } from '../../utility/utility';
 import classes from './History.module.css';
 
 class History extends Component {
@@ -27,16 +27,12 @@ class History extends Component {
     this.setState({ currentTask: matchedTask });
   };
 
-  isEmpty = obj => {
-    const keys = Object.keys(obj);
-    return keys.length === 0;
-  };
 
   render() {
     const { mainActivities, tasks } = this.props;
     const { currentTask } = this.state;
     return (
-      <div>
+      <div className={classes.History}>
         <div className={classes.Title}>Records from past one week.</div>
         {mainActivities
           ? mainActivities.map(mainActivity => (
@@ -47,7 +43,7 @@ class History extends Component {
             />
           ))
           : null}
-        {!this.isEmpty(currentTask) ? <SingleDayData task={currentTask} /> : null}
+        {!isEmpty(currentTask) ? <SingleDayData task={currentTask} /> : null}
       </div>
     );
   }

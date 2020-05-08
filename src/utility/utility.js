@@ -9,4 +9,9 @@ const findTaskByID = (id, taskArray) => {
   return task;
 };
 
-export default findTaskByID;
+const isEmpty = obj => {
+  const keys = Object.keys(obj);
+  return keys.length === 0;
+};
+
+export { findTaskByID, isEmpty };

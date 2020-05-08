@@ -10,6 +10,8 @@ const activitiesForm = ({ values, submitForm, changed }) => {
     form.classList.toggle(classes.Visible);
   };
 
+  const activities = ['sleep', 'cook', 'work', 'exercise', 'read', 'watch'];
+
   return (
     <main>
       <form className={classes.Form} onSubmit={submitForm}>
@@ -19,30 +21,12 @@ const activitiesForm = ({ values, submitForm, changed }) => {
           inputValues={values}
         />
         <div className={classes.SubForm} id="subform">
-          <div className={classes.Inputs}>
-            <label htmlFor="sleep" id="sleep-label">Sleeping:</label>
-            <input type="number" max="80" name="sleep" id="sleep" onChange={changed} value={values.sleep} placeholder="Hours" required />
-          </div>
-          <div className={classes.Inputs}>
-            <label htmlFor="cook" id="cook-label">Cooking:</label>
-            <input type="number" max="80" name="cook" id="cook" onChange={changed} value={values.cook} placeholder="Hours" required />
-          </div>
-          <div className={classes.Inputs}>
-            <label htmlFor="work" id="work-label">Office Work:</label>
-            <input type="number" max="80" name="work" id="work" onChange={changed} value={values.work} placeholder="Hours" required />
-          </div>
-          <div className={classes.Inputs}>
-            <label htmlFor="exercise" id="exercise-label">Exercise:</label>
-            <input type="number" max="80" name="exercise" id="exercise" onChange={changed} value={values.exercise} placeholder="Hours" required />
-          </div>
-          <div className={classes.Inputs}>
-            <label htmlFor="read" id="read-label">Reading:</label>
-            <input type="number" max="80" name="read" id="read" onChange={changed} value={values.read} placeholder="Hours" required />
-          </div>
-          <div className={classes.Inputs}>
-            <label htmlFor="watch" id="watch-label">Watching TV:</label>
-            <input type="number" max="80" id="watch" name="watch" onChange={changed} value={values.watch} placeholder="Hours" required />
-          </div>
+          {activities.map(activity => (
+            <div key={activity} className={classes.Inputs}>
+              <label htmlFor={activity} id={`${activity}-label`}>{activity}</label>
+              <input type="number" max="13" name={activity} id={activity} onChange={changed} value={values[activity]} placeholder="Hours" required />
+            </div>
+          ))}
           <button type="submit" className={classes.SubmitButton}>Save Activities</button>
         </div>
       </form>

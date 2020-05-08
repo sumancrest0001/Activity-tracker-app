@@ -25,7 +25,10 @@ const dataReducer = (state = initialState, action) => {
     case ('SET_CHANGED_PASTDATA'):
       return {
         ...state,
-        pastData: {},
+        pastData: {
+          mainActivities: [],
+          tasks: [],
+        },
         pastDataError: false,
         receivedData: false,
       };

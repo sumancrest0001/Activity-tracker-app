@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPastData } from '../../actions/data';
 import SingleDayData from '../../components/SingleDayData/SingleDayData';
+import { isEmpty, findTaskByID } from '../../utility/utility';
 
 class Stat extends Component {
   componentDidMount() {
@@ -24,8 +25,7 @@ class Stat extends Component {
 
   findActivity = () => {
     const { tasks, mainActivities } = this.props;
-    let activity = null;
-    let task;
+    let activity = {};
     const date = this.findTodayDate();
     for (let i = 0; i < mainActivities.length; i += 1) {
       if (mainActivities[i].recorded === date) {
@@ -33,21 +33,14 @@ class Stat extends Component {
         break;
       }
     }
-    if (activity) {
-      for (let i = 0; i < tasks.length; i += 1) {
-        task = tasks[i].main_activity_id === activity.id ? tasks[i] : [];
-        break;
-      }
-      return task;
-    }
-    return activity;
+    return (findTaskByID(activity.id, tasks));
   }
 
   render() {
     const matchedTask = this.findActivity();
     return (
       <div>
-        {matchedTask !== null ? (
+        {!isEmpty(matchedTask) ? (
           <>
             <h3>Today&apos;s record</h3>
             <SingleDayData task={matchedTask} />
