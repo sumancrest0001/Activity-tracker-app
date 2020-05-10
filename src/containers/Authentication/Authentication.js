@@ -12,16 +12,11 @@ class Authentication extends Component {
     super(props);
     this.state = {
       signup: true,
-      signin: false,
-      signupCredentials: {
-        fullName: '',
+      credentials: {
+        name: '',
         email: '',
         password: '',
-        confirmPassword: '',
-      },
-      signinCredentials: {
-        email: '',
-        password: '',
+        password_confirmation: '',
       },
       errorMessage: '',
     };
@@ -37,47 +32,35 @@ class Authentication extends Component {
     history.push('/');
   };
 
-  successfulSignin = response => {
-    const { onSetCredentials, history } = this.props;
-    const data = {
-      name: response.data.user.name,
-      loggedIn: response.data.logged_in,
-    };
-    onSetCredentials(data);
-    history.push('/');
-  };
-
   signUpChangedHandler = event => {
-    const { signupCredentials } = this.state;
+    const { credentials } = this.state;
     const updatedCredentials = {
-      ...signupCredentials,
+      ...credentials,
       [event.target.name]: event.target.value,
     };
-    this.setState({ signupCredentials: updatedCredentials });
+    this.setState({ credentials: updatedCredentials });
   };
 
-  signInChangedHandler = event => {
-    const { signinCredentials } = this.state;
-    const updatedCredentials = {
-      ...signinCredentials,
-      [event.target.name]: event.target.value,
-    };
-    this.setState({ signinCredentials: updatedCredentials });
-  };
+  rightUserCredentials = () => {
+    const { credentials, signup } = this.state;
+    if (!signup) {
+      return {
+        email: credentials.email,
+        password: credentials.password,
+      };
+    }
+    return credentials;
+  }
 
   signUpHandler = event => {
     const {
-      signupCredentials,
+      signup,
     } = this.state;
     const { onSetFailedCredentials } = this.props;
-    axios.post('https://track-my-activity.herokuapp.com/registrations',
+    const requestType = signup ? 'registrations' : 'sessions';
+    axios.post(`https://track-my-activity.herokuapp.com/${requestType}`,
       {
-        user: {
-          name: signupCredentials.fullName,
-          email: signupCredentials.email,
-          password: signupCredentials.password,
-          password_confirmation: signupCredentials.confirmPassword,
-        },
+        user: this.rightUserCredentials(),
       },
       { withCredentials: true })
       .then(response => {
@@ -92,45 +75,14 @@ class Authentication extends Component {
     event.preventDefault();
   };
 
-  signInHandler = event => {
-    const {
-      signinCredentials,
-    } = this.state;
-    const { onSetFailedCredentials } = this.props;
-    axios.post('https://track-my-activity.herokuapp.com/sessions', {
-      user: {
-        email: signinCredentials.email,
-        password: signinCredentials.password,
-      },
-    },
-    { withCredentials: true })
-      .then(response => {
-        if (response.data.status === 'created') {
-          this.successfulSignin(response);
-        }
-      })
-      .catch(() => {
-        this.setState({ errorMessage: 'Try again' });
-        onSetFailedCredentials();
-      });
-    event.preventDefault();
-  };
-
-
   switchForm = value => {
-    let signUp;
-    let signIn;
-    if (value === 'signup') {
-      signUp = true; signIn = false;
-    } else {
-      signIn = true; signUp = false;
-    }
-    this.setState({ signup: signUp, signin: signIn });
+    const signUp = value === 'signup';
+    this.setState({ signup: signUp });
   }
 
   render() {
     const {
-      signup, signin, signinCredentials, signupCredentials, errorMessage,
+      signup, credentials, errorMessage,
     } = this.state;
     return (
       <div className={classes.Authentication}>
@@ -145,7 +97,7 @@ class Authentication extends Component {
           <div
             role="presentation"
             onClick={() => this.switchForm('signin')}
-            className={signin ? classes.Active : classes.Inactive}
+            className={!signup ? classes.Active : classes.Inactive}
           >
             Sign In
           </div>
@@ -155,16 +107,16 @@ class Authentication extends Component {
           <SignUp
             submitForm={this.signUpHandler}
             changed={this.signUpChangedHandler}
-            values={signupCredentials}
+            values={credentials}
           />
-        ) : null}
-        {signin ? (
-          <SignIn
-            submitForm={this.signInHandler}
-            changed={this.signInChangedHandler}
-            values={signinCredentials}
-          />
-        ) : null}
+        )
+          : (
+            <SignIn
+              submitForm={this.signUpHandler}
+              changed={this.signUpChangedHandler}
+              values={credentials}
+            />
+          )}
       </div>
     );
   }

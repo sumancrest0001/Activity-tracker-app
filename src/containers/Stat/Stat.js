@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPastData } from '../../actions/data';
 import SingleDayData from '../../components/SingleDayData/SingleDayData';
-import { isEmpty, findTaskByID } from '../../utility/utility';
+import { isEmpty, findActivity } from '../../utility/utility';
 
 class Stat extends Component {
   componentDidMount() {
@@ -13,31 +13,9 @@ class Stat extends Component {
     }
   }
 
-  findTodayDate = () => {
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-    const yyyy = today.getFullYear();
-
-    today = `${yyyy}-${mm}-${dd}`;
-    return today;
-  }
-
-  findActivity = () => {
-    const { tasks, mainActivities } = this.props;
-    let activity = {};
-    const date = this.findTodayDate();
-    for (let i = 0; i < mainActivities.length; i += 1) {
-      if (mainActivities[i].recorded === date) {
-        activity = mainActivities[i];
-        break;
-      }
-    }
-    return (findTaskByID(activity.id, tasks));
-  }
-
   render() {
-    const matchedTask = this.findActivity();
+    const { tasks, mainActivities } = this.props;
+    const matchedTask = findActivity(tasks, mainActivities);
     return (
       <div>
         {!isEmpty(matchedTask) ? (

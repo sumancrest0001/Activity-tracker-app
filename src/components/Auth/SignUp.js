@@ -7,8 +7,8 @@ const signUp = ({ submitForm, values, changed }) => (
     <input
       type="text"
       placeholder="Enter your Name"
-      name="fullName"
-      value={values.fullName}
+      name="name"
+      value={values.name}
       onChange={changed}
     />
     <input
@@ -28,8 +28,8 @@ const signUp = ({ submitForm, values, changed }) => (
     <input
       type="password"
       placeholder="Confirm Password"
-      name="confirmPassword"
-      value={values.confirmPassword}
+      name="password_confirmation"
+      value={values.password_confirmation}
       onChange={changed}
     />
     <button
