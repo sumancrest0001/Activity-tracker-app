@@ -32,7 +32,8 @@ const activitiesForm = ({ values, submitForm, changed }) => {
                 onChange={changed}
                 value={values[activity]}
                 placeholder="Hours"
-                required />
+                required
+              />
             </div>
           ))}
           <button type="submit" className={classes.SubmitButton}>Save Activities</button>
