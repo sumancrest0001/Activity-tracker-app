@@ -23,6 +23,8 @@ This is the final capstone project from the Microverse curriculum. The solo obje
 
 - Install node modules using 'npm install'
 
+- Run the project on local server using 'npm start'
+
 - Enjoy the project and feel free to play with the code.
 
 ## Author

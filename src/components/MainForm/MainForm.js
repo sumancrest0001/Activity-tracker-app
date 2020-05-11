@@ -6,7 +6,7 @@ import classes from './MainForm.module.css';
 const mainForm = ({ toggleForm, updateValues, inputValues }) => (
   <div>
     <div className={classes.MainInput}>
-      <label htmlFor="recordingDate" id="recordingDate-label">Date:</label>
+      <span>Date:</span>
       <input
         type="date"
         id="recordingDate"
@@ -18,7 +18,7 @@ const mainForm = ({ toggleForm, updateValues, inputValues }) => (
       />
     </div>
     <div className={classes.MainInput}>
-      <label htmlFor="recordDescription" id="recordDescription-label">Title:</label>
+      <span>Title:</span>
       <input
         type="textarea"
         name="title"

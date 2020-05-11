@@ -22,15 +22,17 @@
   font-size: 1rem;
   margin: 0.5rem auto;
 }
-.Inputs label {
+.Inputs span {
   width: 50%;
   display: flex;
+  align-self: flex-start;
 }
 
 .Inputs input {
   display: flex;
   justify-self: center;
   width: 25%;
+  text-align: end;
 }
 .Minutes {
   margin-left: 1rem;

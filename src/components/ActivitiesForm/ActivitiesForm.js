@@ -23,8 +23,16 @@ const activitiesForm = ({ values, submitForm, changed }) => {
         <div className={classes.SubForm} id="subform">
           {activities.map(activity => (
             <div key={activity} className={classes.Inputs}>
-              <label htmlFor={activity} id={`${activity}-label`}>{activity}</label>
-              <input type="number" max="13" name={activity} id={activity} onChange={changed} value={values[activity]} placeholder="Hours" required />
+              <span>{`${activity}:`}</span>
+              <input
+                type="number"
+                max="13"
+                name={activity}
+                id={activity}
+                onChange={changed}
+                value={values[activity]}
+                placeholder="Hours"
+                required />
             </div>
           ))}
           <button type="submit" className={classes.SubmitButton}>Save Activities</button>
