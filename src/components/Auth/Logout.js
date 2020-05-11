@@ -6,7 +6,7 @@ import { setCredentials } from '../../actions/auth';
 import classes from './Auth.module.css';
 
 const logout = props => {
-  const { historyArray, onSetCredentials } = props;
+  const { historyArray, onSetCredentials, resetCredentials } = props;
   const logoutHandler = () => {
     axios.delete('https://track-my-activity.herokuapp.com/logout/', { withCredentials: true })
       .then(response => {
@@ -16,6 +16,7 @@ const logout = props => {
             loggedIn: false,
           };
           onSetCredentials(data);
+          resetCredentials();
           historyArray.push('/');
         }
       });
@@ -27,11 +28,13 @@ const logout = props => {
 
 const mapDispatchToProps = dispatch => ({
   onSetCredentials: data => dispatch(setCredentials(data)),
+  resetCredentials: () => dispatch({ type: 'USER_LOGOUT' }),
 });
 
 logout.propTypes = {
   onSetCredentials: PropTypes.func.isRequired,
   historyArray: PropTypes.instanceOf(Object).isRequired,
+  resetCredentials: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(logout);
