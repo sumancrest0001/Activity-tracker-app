@@ -3,3 +3,8 @@
   font-size: 1rem;
   text-align: center;
 }
+
+.History {
+  height: 80%;
+  overflow-y: auto;
+}

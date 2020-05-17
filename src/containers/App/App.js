@@ -45,7 +45,7 @@ class App extends Component {
         {loggedIn
           ? (
             <>
-              <Header name={userName} />
+              <Header name={userName} logged />
               <Switch>
                 <Route path="/" exact component={Dashboard} />
                 <Route path="/stat" exact component={Stat} />
@@ -55,7 +55,12 @@ class App extends Component {
               <Footer />
             </>
           )
-          : <Route path="/" exact component={Authentication} />}
+          : (
+            <>
+              <Header name="Activity Tracker" logged={false} />
+              <Route path="/" exact component={Authentication} />
+            </>
+          )}
       </div>
     );
   }

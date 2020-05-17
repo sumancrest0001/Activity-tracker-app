@@ -6,14 +6,16 @@ import classes from './Header.module.css';
 import logo from '../../images/logo.jpg';
 
 const header = props => {
-  const { name, history } = props;
+  const { name, history, logged } = props;
   return (
     <header className={classes.Header}>
       <div>
         <img src={logo} alt="App logo" className={classes.Logo} />
       </div>
       <div className={classes.UserName}>{name}</div>
-      <Logout historyArray={history} />
+      {
+        logged ? <Logout historyArray={history} /> : null
+      }
     </header>
   );
 };
@@ -21,6 +23,7 @@ const header = props => {
 header.propTypes = {
   name: PropTypes.string.isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
+  logged: PropTypes.bool.isRequired,
 };
 
 export default withRouter(header);
