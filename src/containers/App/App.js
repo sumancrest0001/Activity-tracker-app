@@ -9,6 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import Authentication from '../Authentication/Authentication';
 import History from '../History/History';
 import Dashboard from '../Dashboard/Dashboard';
+import Comparison from '../Comparison/Comparison';
 import Stat from '../Stat/Stat';
 import { setCredentials, setFailedCredentials } from '../../actions/auth';
 import './App.css';
@@ -49,6 +50,7 @@ class App extends Component {
                 <Route path="/" exact component={Dashboard} />
                 <Route path="/stat" exact component={Stat} />
                 <Route path="/history" exact component={History} />
+                <Route path="/comparison" exact component={Comparison} />
               </Switch>
               <Footer />
             </>
