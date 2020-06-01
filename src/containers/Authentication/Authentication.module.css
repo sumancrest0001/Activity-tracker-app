@@ -1,0 +1,41 @@
+.Authentication {
+  width: 70%;
+  background-color: #3abef2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Buttons {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.Buttons > div {
+  width: 50%;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.Buttons:last-child {
+  border-left: 2px solid #aaa;
+}
+
+.Active {
+  background: #fff;
+  color: #3abef2;
+}
+
+.Inactive {
+  background: #3abef2;
+  color: #fff;
+}
+
+.ErrorMessage {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  color: red;
+}
+

@@ -1,0 +1,34 @@
+.MainForm button {
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  background-color: #3abef2;
+}
+
+.MainInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  justify-items: start;
+  align-items: center;
+  font-size: 1rem;
+  margin: 0.5rem auto;
+}
+.MainInput label {
+  width: 40%;
+  display: flex;
+}
+
+.MainInput input {
+  display: flex;
+  justify-self: center;
+  width: 60%;
+}
+
+.ActivityDisplay {
+  padding: 0.4rem;
+  background-color:#3abef2;
+  border: 1px solid #aaa;
+  box-shadow: 2px 3px 5px #aaa;
+  margin-top: 1rem;
+}

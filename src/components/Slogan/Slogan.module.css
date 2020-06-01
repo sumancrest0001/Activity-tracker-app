@@ -1,0 +1,13 @@
+.Slogan {
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  background-color: #fff;
+  padding: 0.5rem;
+  color: #454443;
+}
+.Activities {
+  font-weight: 700;
+  color: #000;
+}
