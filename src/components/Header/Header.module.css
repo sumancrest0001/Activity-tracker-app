@@ -4,11 +4,17 @@
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: #3abef2;
-  padding: 1.5rem 0.7rem 0.7rem 0.7rem;
+  padding: 0.5rem;
   color: #fff;
 }
 
 .Header > div {
   display: inline-block;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  align-self: center;
+}
+.Logo {
+  height: 40px;
+  width: 40px;
+
 }
