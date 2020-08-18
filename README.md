@@ -54,6 +54,5 @@ To contribute to the project. Please create an issue.
 ## NOTE 
 Comparison page is under progress.
 
-If you like my work then do not forget to :star: this project. Any type of feedback will be appreciated.
 
 ## MIT Licensed
