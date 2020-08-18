@@ -10,6 +10,10 @@ This is the final capstone project from the Microverse curriculum. The solo obje
 - React-routing is used to create routing.
 - Redux-thunk for asynchronous API call.
 
+## Screenshots
+  ![dashboard](src/images/screenshot1.png)
+  ![Stat](src/images/screenshot2.png)
+
 ## Languages and packages used
 - React
 - Redux
@@ -34,7 +38,17 @@ Suman shrestha
 - [LinkedIn](https://www.linkedin.com/in/suman-shrestha0001/)
 - [Personal-site](https://sumancrest0001.github.io/portfolio/)
 
-## Contribution
+## Future improvements
+- [ ] Work on the compare page and show the result by comparing today's record with past records.
+- [ ] Make it responsive.
+
+- [ ] Possibly add graphs and charts using D3.js.
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 🤝  Contribution
 To contribute to the project. Please create an issue.
 
 ## NOTE 
