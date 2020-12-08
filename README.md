@@ -35,8 +35,8 @@ This is the final capstone project from the Microverse curriculum. The solo obje
 
 Suman shrestha
 - [github](https://github.com/sumancrest0001)
-- [LinkedIn](https://www.linkedin.com/in/suman-shrestha0001/)
-- [Personal-site](https://sumancrest0001.github.io/portfolio/)
+- [LinkedIn](https://www.linkedin.com/in/sumanshrestha1/)
+- [Personal-site](suman-shrestha.netlify.app/)
 
 ## Future improvements
 - [ ] Work on the compare page and show the result by comparing today's record with past records.
